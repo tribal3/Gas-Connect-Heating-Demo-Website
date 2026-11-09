@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #f97316;
+    color: #111827;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid #f97316;
+    outline-offset: 3px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-semibold transition duration-300 ease-out focus-visible:outline-offset-4;
+  }
+
+  .btn-primary {
+    @apply btn bg-ember text-ink shadow-[0_14px_30px_-12px_rgba(249,115,22,0.7)] hover:-translate-y-0.5 hover:bg-[#FB8A3C] hover:shadow-[0_18px_36px_-12px_rgba(249,115,22,0.8)] active:translate-y-0;
+  }
+
+  .btn-blue {
+    @apply btn bg-brand text-white shadow-[0_14px_30px_-12px_rgba(37,99,235,0.65)] hover:-translate-y-0.5 hover:bg-brand-dark;
+  }
+
+  .btn-dark {
+    @apply btn bg-ink text-white hover:-translate-y-0.5 hover:bg-midnight;
+  }
+
+  .btn-outline-light {
+    @apply btn border border-white/20 bg-white/5 text-white backdrop-blur-sm hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10;
+  }
+
+  .btn-outline-dark {
+    @apply btn border border-ink/15 bg-white text-ink hover:-translate-y-0.5 hover:border-ink/30 hover:bg-mist;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-label text-ember-dark;
+  }
+
+  .section-label-light {
+    @apply inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-label text-ember;
+  }
+
+  .label-line {
+    @apply inline-block h-px w-8 bg-current opacity-60;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-ink shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-4 focus:ring-brand/10;
+  }
+
+  .field-error {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-500/10;
+  }
+
+  .prose-copy {
+    @apply text-[15px] leading-7 text-muted sm:text-base;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.045) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .map-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(37, 99, 235, 0.09) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(37, 99, 235, 0.09) 1px, transparent 1px);
+    background-size: 42px 42px;
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+  }
+
+  .clip-corner {
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
